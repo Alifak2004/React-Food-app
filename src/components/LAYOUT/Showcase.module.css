@@ -7,3 +7,8 @@
 	overflow: hidden;
 	/* transform: rotate(-5deg) translateY(-73px) translateX(-20px); */
 }
+@media (max-width: 600px) {
+	.imageStyle {
+		height: 50vh;
+	}
+}

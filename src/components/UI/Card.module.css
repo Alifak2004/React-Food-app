@@ -6,3 +6,8 @@
 	background-color: rgba(107, 101, 101, 0.555);
 	box-shadow: 10px 5px 10px #000;
 }
+@media (max-width: 600px) {
+	.cardBody {
+		width: 85%;
+	}
+}

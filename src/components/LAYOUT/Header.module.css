@@ -31,3 +31,14 @@
 	right: 50px;
 	top: 2px;
 }
+@media (max-width: 650px) {
+	.fixed {
+		right: 2px;
+		top: 2px;
+	}
+	.cart {
+		border: 1px solid #000;
+		background-color: rgb(245, 151, 140);
+		width: fit-content;
+	}
+}

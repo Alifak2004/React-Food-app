@@ -30,3 +30,8 @@
 	z-index: 200;
 	overflow-y: hidden;
 }
+@media (max-width: 650px) {
+	.modalContainer {
+		width: 90%;
+	}
+}

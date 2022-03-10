@@ -1,6 +1,3 @@
-.cart {
-	/* overflow-x: hidden; */
-}
 .eachItem {
 	display: flex;
 	justify-content: space-between;
