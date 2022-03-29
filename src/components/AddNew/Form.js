@@ -7,6 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 const authorVerification = (val) => val == '';
 const Form = () => {
+	// init date
+	const date = new Date();
+
 	//init state
 	const navigate = useNavigate();
 	// init usehttp
@@ -47,6 +50,7 @@ const Form = () => {
 		const newQuote = {
 			title: quoteValue,
 			author: authorValue,
+			date: date,
 		};
 
 		await addToData({

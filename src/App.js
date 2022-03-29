@@ -8,7 +8,7 @@ const App = () => {
 		<>
 			<Header />
 			<Routes>
-				<Route path='/quotes' element={<Quotes />} />
+				<Route path='/' element={<Quotes />} />
 				<Route path='/addNew' element={<AddQuote />} />
 				<Route path='/quotes/:id' element={<QuoteDetails />} />
 			</Routes>

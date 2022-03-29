@@ -11,20 +11,18 @@ const QuoteDetails = () => {
 	const [showComments, setShowComments] = useState(false);
 	const [showForm, setShowForm] = useState(false);
 	const [detail, setDetail] = useState({});
-	const [comments, setComments] = useState([]);
 
 	// init usehttp
 	const { loading, error, fetchData } = useHttp();
-	const params = useParams();
 
+	// getting id
+	const params = useParams();
 	const { id } = params;
 
 	// fetching comments
-
 	const ToDoAfter = useCallback((data) => {
 		// modifieng Comments
 		let commentsMod = [];
-		//  mutating Comments section to an array
 		if (data.comments) {
 			for (const key in data.comments) {
 				commentsMod.push({
@@ -74,6 +72,7 @@ const QuoteDetails = () => {
 	if (loading) {
 		return <Loading />;
 	}
+
 	// Error state
 	if (error) {
 		return <div>Something went wrong</div>;

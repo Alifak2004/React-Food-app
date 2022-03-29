@@ -7,7 +7,7 @@
 	color: rgb(31, 211, 31);
 	font-size: 2.2rem;
 	position: relative;
-	box-shadow: 5px 5px 20px 4px #222;
+	box-shadow: 5px 5px 15px 2px #222;
 }
 .container {
 	max-width: 60%;
@@ -20,8 +20,17 @@
 	position: absolute;
 	right: 0;
 	bottom: 0;
-	padding: 1rem;
+	padding: 1.2rem;
 	opacity: 0.9;
+}
+.date {
+	color: #f4f4f4;
+	opacity: 0.7;
+	font-size: 0.9rem;
+	position: absolute;
+	bottom: 0;
+	right: 3px;
+	padding: 0.1rem;
 }
 @media (max-width: 800px) {
 	.container {

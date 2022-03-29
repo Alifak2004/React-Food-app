@@ -34,22 +34,37 @@ const QuotesList = () => {
 				id: key,
 				quote: data[key].title,
 				author: data[key].author,
+				date: data[key].date,
 			});
 		}
 		setQuotes(arr);
 	};
 
 	useEffect(() => {
+		let abortController = new AbortController();
+
 		fetchData(
 			{
 				url: 'https://react-app-955c0-default-rtdb.firebaseio.com/quotes.json',
+				signal: abortController.signal,
 			},
 			fetchedData
 		);
-	}, [fetchData]);
 
+		return () => {
+			abortController.abort();
+		};
+	}, [fetchData]);
+	const arr = 'dwad';
+	arr.substring();
 	const quotesList = quotes.map((item) => {
-		return <OneQuote item={item} key={item.id} />;
+		if (item.quote.length > 65) {
+			const quote = item.quote.substring(0, 65);
+			const quoteMod = `${quote}...`;
+			const itemMod = { ...item, quote: quoteMod };
+
+			return <OneQuote item={itemMod} key={itemMod.id} />;
+		} else return <OneQuote item={item} key={item.id} />;
 	});
 
 	if (loading) {
@@ -58,6 +73,7 @@ const QuotesList = () => {
 	if (error) {
 		return <div className='centered'>Something went Wrong</div>;
 	}
+
 	return (
 		<div className='container'>
 			<div className='display-6 text-dark'>Quotes</div>

@@ -10,20 +10,22 @@ const useHttp = () => {
 			const res = await fetch(obj.url, {
 				method: obj.method || 'GET',
 				body: obj.body || null,
+				signal: obj.signal || null,
 			});
-
 			if (!res.ok) {
 				throw new Error('Something went wrong');
 			}
 
 			const resData = await res.json();
 
-			if (afterFetching) {
-				afterFetching(resData);
-			}
+			await afterFetching(resData);
 		} catch (error) {
-			console.log(error);
-			setError(error);
+			if (error.name === 'AbortError') {
+				console.log(error.name);
+				throw error;
+			} else {
+				setError(error);
+			}
 		}
 		setLoading(false);
 	}, []);
