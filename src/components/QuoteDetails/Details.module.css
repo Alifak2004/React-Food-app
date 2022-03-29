@@ -1,0 +1,30 @@
+.box {
+	margin-top: 3rem;
+	border: 2px solid #ddd;
+	padding: 3rem;
+	border-radius: 8px;
+	background-color: #333;
+	color: rgb(31, 211, 31);
+	font-size: 2.2rem;
+	position: relative;
+	box-shadow: 5px 5px 20px 4px #222;
+}
+.container {
+	max-width: 60%;
+	margin: auto;
+}
+.quote {
+}
+.author {
+	font-size: 1.2rem;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	padding: 1rem;
+	opacity: 0.9;
+}
+@media (max-width: 800px) {
+	.container {
+		max-width: 90%;
+	}
+}

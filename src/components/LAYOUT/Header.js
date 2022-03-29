@@ -1,94 +1,39 @@
-import React, {
-	createRef,
-	useContext,
-	useEffect,
-	useRef,
-	useState,
-} from 'react';
-import CartContext from '../../store/CartContext';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import Showcase from './Showcase';
-import style from './Header.module.css';
-const Header = (props) => {
-	const cartctx = useContext(CartContext);
-	const [iseInter, setIsInter] = useState(false);
-	const { items } = cartctx;
-
-	const [runAnimation, setRunAnimation] = useState(false);
-	const totalItemsNum = cartctx.items.reduce((currTotal, item) => {
-		return (currTotal += item.amount);
-	}, 0);
-	const cartStyle = `${runAnimation ? style.bump : ''}`;
-
-	useEffect(() => {
-		if (items.length == 0) {
-			return;
-		}
-		setRunAnimation(true);
-		console.log(runAnimation);
-		const timer = setTimeout(() => {
-			setRunAnimation(false);
-		}, 300);
-		return () => {
-			console.log(runAnimation);
-			clearTimeout(timer);
-		};
-	}, [items]);
-
-	// HOOKS
-
-	const useIntersection = (element, rootMargin) => {
-		const [isVisible, setState] = useState(false);
-
-		useEffect(() => {
-			const Observer = new IntersectionObserver(
-				([entry]) => {
-					setState(entry.isIntersecting);
-				},
-				{ rootMargin }
-			);
-
-			element.current && Observer.observe(element.current);
-
-			return () => Observer.unobserve(element.current);
-		}, []);
-		return isVisible;
-	};
-
-	const ref = useRef();
-
-	const inViewport = useIntersection(ref, '0px');
-	console.log(!inViewport);
-	const isFixed = `${!inViewport ? style.fixed : ''}`;
+const Header = () => {
 	return (
-		<>
-			<header
-				ref={ref}
-				className={` navbar bg-dark navbar-dark`}
-				style={{ zIndex: '10' }}>
-				<div className='container'>
-					<h1 className='navbar-brand'>React Food app</h1>
+		<div className='mb-4 navbar navbar-expand-md bg-dark navbar-dark'>
+			<div className='container'>
+				<div className='navbar-brand'>Quotes Project</div>
 
-					<nav id='mainNav'>
-						<ul className='navbar-nav ms-auto mb-2 mb-lg-0 '>
-							<li className={`${style.cart} ${isFixed} ${cartStyle}`}>
-								<Link
-									className={` p-3 text-white d-flex p-3 nav-link align-items-center`}
-									to='/cart'
-									onClick={props.showCartOnClick}>
-									Your Cart
-									<i className='fas fa-shopping-cart px-1'></i>
-									<div className='rounded opacity-75 bg-light text-dark px-3 ms-2'>
-										{totalItemsNum}
-									</div>
+				<button
+					className='navbar-toggler'
+					data-bs-target='#navbar-toggler'
+					data-bs-toggle='collapse'>
+					<i className='navbar-toggler-icon'></i>
+				</button>
+
+				<div
+					id='navbar-toggler'
+					className='justify-content-end collapse navbar-collapse'>
+					<nav>
+						<ul className='navbar-nav'>
+							<li className='nav-item'>
+								<Link to='quotes' className='nav-link'>
+									All Quotes
+								</Link>
+							</li>
+							<li className='nav-item'>
+								<Link to='/addNew' className='nav-link'>
+									Add a Quote
 								</Link>
 							</li>
 						</ul>
 					</nav>
 				</div>
-			</header>
-			<Showcase />
-		</>
+			</div>
+		</div>
 	);
 };
+
 export default Header;

@@ -1,33 +1,19 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-// Components
 import Header from './components/LAYOUT/Header';
-import Menu from './components/MENU/Menu';
-import Cart from './components/CART/Cart';
-import CartProvider from './store/CartProvider';
-import Footer from './components/LAYOUT/Footer';
+import Quotes from './pages/Quotes';
+import { Routes, Route } from 'react-router-dom';
+import AddQuote from './pages/AddQuote';
+import QuoteDetails from './pages/QuoteDetails';
 const App = () => {
-	const [showCart, setShowCart] = useState(false);
-
-	const showCartOnClick = () => {
-		setShowCart(true);
-	};
-
-	const hideCartOnClick = () => {
-		setShowCart(false);
-	};
-
 	return (
-		<CartProvider>
-			<Router>
-				<div className='bg-dark text-light'>
-					<Header showCartOnClick={showCartOnClick} />
-					<Menu />
-					{showCart && <Cart hideCartOnClick={hideCartOnClick} />}
-					<Footer />
-				</div>
-			</Router>
-		</CartProvider>
+		<>
+			<Header />
+			<Routes>
+				<Route path='/quotes' element={<Quotes />} />
+				<Route path='/addNew' element={<AddQuote />} />
+				<Route path='/quotes/:id' element={<QuoteDetails />} />
+			</Routes>
+		</>
 	);
 };
+
 export default App;

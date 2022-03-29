@@ -1,0 +1,15 @@
+.author {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	font-size: 1.2rem;
+	font-family: monospace;
+}
+body {
+	font-family: cursive;
+}
+.button {
+	display: inline;
+	margin-left: auto;
+	width: fit-content;
+}
